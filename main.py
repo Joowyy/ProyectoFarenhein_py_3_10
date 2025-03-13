@@ -7,11 +7,13 @@ fahrenheit = np.array ([-40, 14, 32, 46, 59, 72, 100], dtype = float)
 
 # Keras (framework) Unidades son las capas que tenemos
 # Dense (tipo de capa) Input_shape (cantidad de neuronas)
-capa = tf.keras.layers.Dense(units = 1, input_shape = [1])
+capa1 = tf.keras.layers.Dense(units = 3, input_shape = [1])
+capa2 = tf.keras.layers.Dense(units = 3)
+salida = tf.keras.layers.Dense(units = 1)
 
 # Modelo secuencial, es la forma en que se van apilando las capas
 # Es decir, (capa 1, capa 2, capa 3), es un modelo de capas
-modelo = tf.keras.Sequential([capa])
+modelo = tf.keras.Sequential([capa1, capa2, salida])
 
 # Compilador del modelo
 modelo.compile(
@@ -24,7 +26,7 @@ modelo.compile(
 
 # Entrenamiento del modelo
 print("Comenzando entrenamiento...")
-historial = modelo.fit(celsius, fahrenheit, epochs = 300, verbose = False)
+historial = modelo.fit(celsius, fahrenheit, epochs = 100, verbose = False)
 print("Modelo entrenado!")
 
 import matplotlib.pyplot as plt
